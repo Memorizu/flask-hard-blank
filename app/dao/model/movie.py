@@ -1,11 +1,7 @@
 from setup_db import db
-
 from marshmallow import Schema, fields
-from .genre import Genre
-from .director import Director
-
-
-
+from app.dao.model.genre import Genre
+from app.dao.model.director import Director
 
 class Movie(db.Model):
     __tablename__ = 'movie'
@@ -19,6 +15,10 @@ class Movie(db.Model):
     genre = db.relationship('Genre')
     director_id = db.Column(db.Integer, db.ForeignKey('director.id'))
     director = db.relationship('Director')
+
+    # def to_dict(self):
+    #     return {column.name: getattr(self, column.name)
+    #             for column in self.__table__.columns}
 
 
 class MovieSchema(Schema):

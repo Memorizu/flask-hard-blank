@@ -1,12 +1,12 @@
-
 from flask import Flask
 from flask_restx import Api
 
+from app.views.director import director_ns
+from app.views.genre import genre_ns
 from config import Config
-from create_data import create_db
 
 from setup_db import db
-from views.movie import movie_ns
+from app.views.movie import movie_ns
 
 
 # функция создания основного объекта app
@@ -22,6 +22,8 @@ def register_extensions(app):
     db.init_app(app)
     api = Api(app)
     api.add_namespace(movie_ns)
+    api.add_namespace(director_ns)
+    api.add_namespace(genre_ns)
     create_data(app, db)
     # create_db()
 
@@ -35,8 +37,8 @@ def create_data(app, db):
 
 
 app = create_app(Config())
-app.debug = True
+
 
 if __name__ == '__main__':
 
-    app.run(host="localhost", port=10001, debug=True)
+    app.run(host="localhost", port=10001)
