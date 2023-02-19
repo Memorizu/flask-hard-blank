@@ -21,7 +21,7 @@ class MovieService:
         if year:
             req = req.filter(year == Movie.year)
         movies = req.all()
-        return movies
+        return self.dao.get_all(movies)
 
     def get_one(self, mid):
         return self.dao.get_one(mid)

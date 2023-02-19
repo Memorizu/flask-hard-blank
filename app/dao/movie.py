@@ -6,9 +6,9 @@ class MovieDAO:
     def __init__(self, session):
         self.session = session
 
-    def get_all(self):
-        req = self.session.query(Movie)
-        return self.session.query(Movie).all()
+    def get_all(self, movies):
+
+        return movies
 
     def get_one(self, mid):
 

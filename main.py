@@ -25,15 +25,11 @@ def register_extensions(app):
     api.add_namespace(director_ns)
     api.add_namespace(genre_ns)
     create_data(app, db)
-    # create_db()
 
 
 def create_data(app, db):
     with app.app_context():
         db.create_all()
-        # create_db()
-        # with db.session.begin():
-        #     create_db()
 
 
 app = create_app(Config())

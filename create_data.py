@@ -1,6 +1,6 @@
 import data
 from app.dao.model.director import Director
-from app.dao.model import Genre
+from app.dao.model.genre import Genre
 from app.dao.model.movie import Movie
 from setup_db import db
 

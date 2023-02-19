@@ -3,6 +3,7 @@ from marshmallow import Schema, fields
 from app.dao.model.genre import Genre
 from app.dao.model.director import Director
 
+
 class Movie(db.Model):
     __tablename__ = 'movie'
     id = db.Column(db.Integer, primary_key=True)
@@ -15,10 +16,6 @@ class Movie(db.Model):
     genre = db.relationship('Genre')
     director_id = db.Column(db.Integer, db.ForeignKey('director.id'))
     director = db.relationship('Director')
-
-    # def to_dict(self):
-    #     return {column.name: getattr(self, column.name)
-    #             for column in self.__table__.columns}
 
 
 class MovieSchema(Schema):
